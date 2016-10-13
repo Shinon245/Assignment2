@@ -50,6 +50,14 @@ public class JavaApplication2
         
         names.sort((a,b) -> -a.compareTo(b)); //lambda
         
+        try(Close out = outExpect("Joe", EOL, "Bob", EOL, "Billy", EOL)) {
+        
+        for (String name: names)
+        {
+            println(name);
+        }
+        }
+        
         for (String name: names)
         {
             println(name);
