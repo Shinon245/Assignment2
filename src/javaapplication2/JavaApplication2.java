@@ -89,6 +89,39 @@ public static void testCollection()
             }
         }
     }
+
+
+
+    public static void testMap()
+    {
+        Map<String, Integer> pokemonNumbers = new HashMap<String,Integer>();
+  
+        pokemonNumbers.put("Bulbasaur", 001);
+        pokemonNumbers.put("Xerneas", 716);
+        
+        try (Close out = outExpect("Bulbasaur = 1", EOL, "Xerneas = 716", EOL)){
+        for (String key : pokemonNumbers.keySet())
+        {
+            println(key + " = " + pokemonNumbers.get(key));
+        }
+        }
+        
+        for (String key : pokemonNumbers.keySet())
+        {
+            println(key + " = " + pokemonNumbers.get(key));
+        }
+        
+        for (String key : pokemonNumbers.keySet())
+        {
+            pokemonNumbers.put(key, pokemonNumbers.get(key)+1);
+        }
+        
+        for (String key : pokemonNumbers.keySet())
+        {
+            println(key + " = " + pokemonNumbers.get(key));
+        }
+        
+    }
     
     
        
@@ -96,6 +129,7 @@ public static void testCollection()
     {
         testArrayList();
         testCollection();
+        testMap();
     }
  
   
