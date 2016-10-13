@@ -65,10 +65,46 @@ public class JavaApplication2
         
     }
     
+    
+    
+public static void testCollection()
+    {
+        Collection<String> c = new LinkedList<String>();
+        c.add("Hello");
+        c.add("Fellow");
+        c.add("Human");
+        
+        try (Close out = outExpect(true))
+        {
+            println(c.contains("Human"));
+        }
+        try (Close out = outExpect(false))
+        {
+            println(c.contains("Fello"));
+        }
+        
+        Iterator<String> i = c.iterator();
+        while (i.hasNext())
+        {
+            String value = i.next();
+            println(value);
+        }
+        
+        try (Close out = outExpect("Hello",EOL,"Fellow",EOL,"Human",EOL))
+        {
+            for(String value : c)
+            {
+                println(value);
+            }
+        }
+    }
+    
+    
        
     public static void main(String[] args)
     {
         testArrayList();
+        testCollection();
     }
  
   
