@@ -23,13 +23,46 @@ import static kiss.API.*;
  *
  * @author Cameron
  */
-public class JavaApplication2 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+public class JavaApplication2 
+{
+    
+    public static void testArrayList(){
+        ArrayList<String> names = new ArrayList<String>();
+        
+        names.add("Billy");
+        names.add("Bob");
+        names.add("Joe");
+        
+        for (String name: names)
+        {
+            println(name);
+        }
+        
+        names.sort(new Comparator<String>()
+        {
+            @Override
+            public int compare(String a, String b)
+            {
+                return -a.compareTo(b);
+            }
+        }
+        ); //anonymous inner class
+        
+        names.sort((a,b) -> -a.compareTo(b)); //lambda
+        
+        for (String name: names)
+        {
+            println(name);
+        }
+        
     }
+    
+       
+    public static void main(String[] args)
+    {
+        testArrayList();
+    }
+ 
+  
     
 }
