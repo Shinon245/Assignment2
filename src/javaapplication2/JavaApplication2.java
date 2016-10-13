@@ -38,17 +38,7 @@ public class JavaApplication2
             println(name);
         }
         
-        names.sort(new Comparator<String>()
-        {
-            @Override
-            public int compare(String a, String b)
-            {
-                return -a.compareTo(b);
-            }
-        }
-        ); //anonymous inner class
-        
-        names.sort((a,b) -> -a.compareTo(b)); //lambda
+        names.sort((a,b) -> -a.compareTo(b)); 
         
         try(Close out = outExpect("Joe", EOL, "Bob", EOL, "Billy", EOL)) {
         
@@ -78,9 +68,10 @@ public static void testCollection()
         {
             println(c.contains("Human"));
         }
+        c.remove("Fellow");
         try (Close out = outExpect(false))
         {
-            println(c.contains("Fello"));
+            println(c.contains("Fellow"));
         }
         
         Iterator<String> i = c.iterator();
@@ -90,7 +81,7 @@ public static void testCollection()
             println(value);
         }
         
-        try (Close out = outExpect("Hello",EOL,"Fellow",EOL,"Human",EOL))
+        try (Close out = outExpect("Hello",EOL,"Human",EOL))
         {
             for(String value : c)
             {
