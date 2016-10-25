@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import junit.framework.*;
+import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 
 
@@ -60,35 +61,32 @@ public class JavaApplication2
     
 public static void testCollection()
     {
+        String str = "";
         Collection<String> c = new LinkedList<String>();
         c.add("Hello");
         c.add("Fellow");
         c.add("Human");
         
-        try (Close out = outExpect(true))
-        {
-            println(c.contains("Human"));
-        }
+        assertTrue(c.contains("Human"));
+
         c.remove("Fellow");
-        try (Close out = outExpect(false))
-        {
-            println(c.contains("Fellow"));
-        }
+        assertFalse(c.contains("Fellow"));
         
         Iterator<String> i = c.iterator();
         while (i.hasNext())
         {
             String value = i.next();
-            println(value);
+            System.out.println(value);
         }
         
-        try (Close out = outExpect("Hello",EOL,"Human",EOL))
+        for(String value : c)
         {
-            for(String value : c)
-            {
-                println(value);
-            }
+            str += value;
+            str += " ";
         }
+        
+        System.out.print(str);
+        assertTrue("Hello Human ".equals(str));
     }
 
 
@@ -129,7 +127,7 @@ public static void testCollection()
     public static void main(String[] args)
     {
         testArrayList();
-        //testCollection();
+        testCollection();
         //testMap();
     }
  
