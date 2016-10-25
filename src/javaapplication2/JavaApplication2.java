@@ -7,16 +7,12 @@ package javaapplication2;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
-import static kiss.API.*;
+import junit.framework.*;
+import static junit.framework.TestCase.assertTrue;
 
 
 /**
@@ -33,24 +29,29 @@ public class JavaApplication2
         names.add("Bob");
         names.add("Joe");
         
+        String str = "";
+        
         for (String name: names)
         {
-            println(name);
+            System.out.println(name);
         }
         
         names.sort((a,b) -> -a.compareTo(b)); 
         
-        try(Close out = outExpect("Joe", EOL, "Bob", EOL, "Billy", EOL)) {
+        for (String name: names)
+        {
+            str += name;
+            str += " ";
+        }
+        
+        System.out.println(str);
+        
+       assertTrue("Joe Bob Billy ".equals(str));
+
         
         for (String name: names)
         {
-            println(name);
-        }
-        }
-        
-        for (String name: names)
-        {
-            println(name);
+            System.out.println(name);
         }
         
     }
@@ -128,8 +129,8 @@ public static void testCollection()
     public static void main(String[] args)
     {
         testArrayList();
-        testCollection();
-        testMap();
+        //testCollection();
+        //testMap();
     }
  
   
