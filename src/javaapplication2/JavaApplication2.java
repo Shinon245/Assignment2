@@ -98,16 +98,14 @@ public static void testCollection()
         pokemonNumbers.put("Bulbasaur", 001);
         pokemonNumbers.put("Xerneas", 716);
         
-        try (Close out = outExpect("Bulbasaur = 1", EOL, "Xerneas = 716", EOL)){
         for (String key : pokemonNumbers.keySet())
         {
-            println(key + " = " + pokemonNumbers.get(key));
-        }
+            System.out.println(key + " = " + pokemonNumbers.get(key));
         }
         
         for (String key : pokemonNumbers.keySet())
         {
-            println(key + " = " + pokemonNumbers.get(key));
+            System.out.println(key + " = " + pokemonNumbers.get(key));
         }
         
         for (String key : pokemonNumbers.keySet())
@@ -117,7 +115,7 @@ public static void testCollection()
         
         for (String key : pokemonNumbers.keySet())
         {
-            println(key + " = " + pokemonNumbers.get(key));
+            System.out.println(key + " = " + pokemonNumbers.get(key));
         }
         
     }
